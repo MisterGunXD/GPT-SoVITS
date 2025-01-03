@@ -18,7 +18,6 @@ RUN apt-get update && \
 WORKDIR /workspace
 COPY requirements.txt /workspace/
 RUN pip install --no-cache-dir -r requirements.txt
-RUN python -m nltk.downloader averaged_perceptron_tagger cmudict
 
 # Define a build-time argument for image type
 ARG IMAGE_TYPE=full
@@ -31,7 +30,8 @@ RUN if [ "$IMAGE_TYPE" != "elite" ]; then \
         chmod +x /workspace/Docker/download.sh && \
         /workspace/Docker/download.sh && \
         python /workspace/Docker/download.py && \
-        python -m nltk.downloader averaged_perceptron_tagger cmudict; \
+        python -m nltk.downloader averaged_perceptron_tagger cmudict && \
+        python -m nltk.downloader averaged_perceptron_tagger_eng; \
     fi
 
 
