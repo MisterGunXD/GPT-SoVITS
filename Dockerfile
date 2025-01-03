@@ -39,4 +39,4 @@ COPY . /workspace
 
 EXPOSE 9880
 
-CMD ["python", "api_v2.py"]
+CMD ["python", "api_v2.py", "--bind_addr", "0.0.0.0"]
