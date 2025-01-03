@@ -18,6 +18,7 @@ RUN apt-get update && \
 WORKDIR /workspace
 COPY requirements.txt /workspace/
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m nltk.downloader averaged_perceptron_tagger cmudict
 
 # Define a build-time argument for image type
 ARG IMAGE_TYPE=full
